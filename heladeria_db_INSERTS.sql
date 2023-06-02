@@ -7,10 +7,10 @@ SHOW TABLES;
 
 SELECT * FROM categoria;
 -- INSERTS CATEGORIAS
--- INSERT INTO categoria (nombre_categoria) VALUES("Helados");
--- INSERT INTO categoria (nombre_categoria) VALUES("Helados Premium");
--- INSERT INTO categoria (nombre_categoria) VALUES("Paletas");
--- INSERT INTO categoria (nombre_categoria) VALUES("Aguas");
+INSERT INTO categoria (nombre_categoria) VALUES("Helados");
+INSERT INTO categoria (nombre_categoria) VALUES("Helados Premium");
+INSERT INTO categoria (nombre_categoria) VALUES("Paletas");
+INSERT INTO categoria (nombre_categoria) VALUES("Aguas");
 
 SELECT * FROM categoria;
 
