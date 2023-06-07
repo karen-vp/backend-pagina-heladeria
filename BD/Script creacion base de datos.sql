@@ -29,9 +29,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `heladeria`.`productos` (
   `product_id` INT NOT NULL AUTO_INCREMENT,
-  `nombre_producto` VARCHAR(45) NOT NULL,
+  `nombre_producto` VARCHAR(150) NOT NULL,
   `precio` INT NOT NULL,
-  `descripcion` VARCHAR(200) NOT NULL,
+  `descripcion` VARCHAR(1000) NOT NULL,
   `categoria_id` INT NOT NULL,
   `imagen` VARCHAR(1000) NULL,
   PRIMARY KEY (`product_id`),
@@ -51,9 +51,9 @@ CREATE TABLE IF NOT EXISTS `heladeria`.`usuarios` (
   `usuario_id` INT NOT NULL AUTO_INCREMENT,
   `nombre_de_usuario` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `contraseña` VARCHAR(45) NOT NULL,
-  `telefono` INT NOT NULL,
-  `ubicacion` VARCHAR(45) NOT NULL,
+  `contraseña` VARCHAR(200) NOT NULL,
+  `telefono` VARCHAR(45) NOT NULL,
+  `ubicacion` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`usuario_id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -64,8 +64,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `heladeria`.`ordenes` (
   `orden_id` INT NOT NULL AUTO_INCREMENT,
-  `productos_id` VARCHAR(45) NULL,
-  `fk_usuarios_id` INT NULL,
+  `fk_usuarios_id` INT NOT NULL,
   PRIMARY KEY (`orden_id`),
   INDEX `fk_ordenes_has_usuarios_idx` (`fk_usuarios_id` ASC) VISIBLE,
   CONSTRAINT `fk_ordenes_has_usuarios`
