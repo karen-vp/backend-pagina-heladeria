@@ -40,8 +40,10 @@ INSERT INTO productos (nombre_producto, precio, descripcion, categoria_id, image
 
 -- INSERTS USUARIOS
 SELECT * FROM usuarios;
-INSERT INTO usuarios (nombre_de_usuario, email, contraseña, telefono, ubicacion) VALUES ("Zelda Hyrule", "zeldaH@outlook.com", "PerritoBonito40","5551234567", "123 Avenida de la Imaginación, Ciudad Ficticia, País de las Maravillas");
-INSERT INTO usuarios (nombre_de_usuario, email, contraseña, telefono, ubicacion) VALUES ("Claude Riegan", "claudcinhermosin@hotmail.com", "Lalalacontraseñawii","55-3789-0123", "Calle de los Sueños, Villa Esperanza, Fantasilandia.");
-INSERT INTO usuarios (nombre_de_usuario, email, contraseña, telefono, ubicacion) VALUES ("Lucina Everdeen", "LuceverH@gmail.com", "890Pass77word","55-6456-7890", "Carrera del Arco Iris, Colina Encantada, Reino de Fantasía.");
-INSERT INTO usuarios (nombre_de_usuario, email, contraseña, telefono, ubicacion) VALUES ("Chris Cavil", "cavilC@gmail.com", "Cuchurrumin","55-9234-5678", "Paseo de las Estrellas, Ciudad Celestial, Universo Infinito.");
+INSERT INTO usuarios (nombre_de_usuario, email, contraseña, telefono, ubicacion, rol_id) VALUES ("Zelda Hyrule", "zeldaH@outlook.com", "PerritoBonito40","5551234567", "123 Avenida de la Imaginación, Ciudad Ficticia, País de las Maravillas", 1);
+INSERT INTO usuarios (nombre_de_usuario, email, contraseña, telefono, ubicacion, rol_id) VALUES ("Claude Riegan", "claudcinhermosin@hotmail.com", "Lalalacontraseñawii","55-3789-0123", "Calle de los Sueños, Villa Esperanza, Fantasilandia.", 2);
+INSERT INTO usuarios (nombre_de_usuario, email, contraseña, telefono, ubicacion, rol_id) VALUES ("Lucina Everdeen", "LuceverH@gmail.com", "890Pass77word","55-6456-7890", "Carrera del Arco Iris, Colina Encantada, Reino de Fantasía.", 2);
+INSERT INTO usuarios (nombre_de_usuario, email, contraseña, telefono, ubicacion, rol_id) VALUES ("Chris Cavil", "cavilC@gmail.com", "Cuchurrumin","55-9234-5678", "Paseo de las Estrellas, Ciudad Celestial, Universo Infinito.",2 );
 
+-- INSERTS ROL
+INSERT INTO roles(rol_id, rol_nombre) VALUES(1, "admin"), (2,"cliente");
