@@ -115,20 +115,6 @@ CREATE TABLE IF NOT EXISTS `heladeria`.`productos_has_ordenes` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `heladeria`.`usuarios_roles`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heladeria`.`usuarios_roles` (
-  `usuarios_roles_id` INT NOT NULL,
-  PRIMARY KEY (`usuarios_roles_id`),
-  CONSTRAINT `fk_usuarios_rol`
-    FOREIGN KEY (`usuarios_roles_id`)
-    REFERENCES `heladeria`.`roles` (`rol_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
