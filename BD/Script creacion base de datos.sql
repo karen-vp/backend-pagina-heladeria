@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `heladeria`.`productos` (
   `precio` INT NOT NULL,
   `descripcion` VARCHAR(1000) NOT NULL,
   `categoria_id` INT NOT NULL,
-  `imagen` VARCHAR(1000) NULL,
+  `imagen` VARCHAR(1000) NOT NULL,
   PRIMARY KEY (`product_id`),
   INDEX `fk_productos_has_categoria_idx` (`categoria_id` ASC) VISIBLE,
   CONSTRAINT `fk_productos_has_categoria`
@@ -41,6 +41,16 @@ CREATE TABLE IF NOT EXISTS `heladeria`.`productos` (
     REFERENCES `heladeria`.`categoria` (`categoria_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `heladeria`.`roles`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `heladeria`.`roles` (
+  `rol_id` INT NOT NULL,
+  `rol_nombre` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`rol_id`))
 ENGINE = InnoDB;
 
 
@@ -54,8 +64,15 @@ CREATE TABLE IF NOT EXISTS `heladeria`.`usuarios` (
   `contraseña` VARCHAR(200) NOT NULL,
   `telefono` VARCHAR(45) NOT NULL,
   `ubicacion` VARCHAR(200) NOT NULL,
+  `rol_id` INT NOT NULL,
   PRIMARY KEY (`usuario_id`),
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  INDEX `fk_usuarios_roles_idx` (`rol_id` ASC) VISIBLE,
+  CONSTRAINT `fk_usuarios_roles`
+    FOREIGN KEY (`rol_id`)
+    REFERENCES `heladeria`.`roles` (`rol_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -81,7 +98,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `heladeria`.`productos_has_ordenes` (
   `productos_product_id` INT NOT NULL,
   `ordenes_orden_id` INT NOT NULL,
-  `cantidad_productos` INT NULL,
+  `cantidad_productos` INT NOT NULL,
   PRIMARY KEY (`productos_product_id`, `ordenes_orden_id`),
   INDEX `fk_productos_has_ordenes_ordenes1_idx` (`ordenes_orden_id` ASC) VISIBLE,
   INDEX `fk_productos_has_ordenes_productos1_idx` (`productos_product_id` ASC) VISIBLE,
@@ -93,6 +110,20 @@ CREATE TABLE IF NOT EXISTS `heladeria`.`productos_has_ordenes` (
   CONSTRAINT `fk_productos_has_ordenes_ordenes1`
     FOREIGN KEY (`ordenes_orden_id`)
     REFERENCES `heladeria`.`ordenes` (`orden_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `heladeria`.`usuarios_roles`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `heladeria`.`usuarios_roles` (
+  `usuarios_roles_id` INT NOT NULL,
+  PRIMARY KEY (`usuarios_roles_id`),
+  CONSTRAINT `fk_usuarios_rol`
+    FOREIGN KEY (`usuarios_roles_id`)
+    REFERENCES `heladeria`.`roles` (`rol_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
