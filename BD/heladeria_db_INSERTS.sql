@@ -46,4 +46,6 @@ INSERT INTO usuarios (nombre_de_usuario, email, contraseña, telefono, ubicacion
 INSERT INTO usuarios (nombre_de_usuario, email, contraseña, telefono, ubicacion, rol_id) VALUES ("Chris Cavil", "cavilC@gmail.com", "Cuchurrumin","55-9234-5678", "Paseo de las Estrellas, Ciudad Celestial, Universo Infinito.",2 );
 
 -- INSERTS ROL
-INSERT INTO roles(rol_id, rol_nombre) VALUES(1, "admin"), (2,"cliente");
+INSERT INTO rol(rol_id, rol_nombre) VALUES(1, "admin"), (2,"cliente");
+
+SELECT * FROM rol;
