@@ -4,11 +4,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.slf4j.Logger;
-import com.heladeria.app.repository.RolRepository;
-import com.heladeria.app.entity.Rol;
 
+import com.heladeria.app.repository.ProductRepository;
+import com.heladeria.app.repository.RolRepository;
+import com.heladeria.app.entity.Producto;
+import com.heladeria.app.entity.Rol;
 import lombok.extern.slf4j.Slf4j;
+
 @Slf4j
 @SpringBootApplication
 public class HeladeriaApplication {
@@ -18,23 +20,28 @@ public class HeladeriaApplication {
 	
 	}
 	
-	// @Bean
-	  public CommandLineRunner demo(RolRepository repository) {
+	@Bean
+	public CommandLineRunner demo(RolRepository repositoryRoles, ProductRepository repositoryProductos) {
 	    return (args) -> {
 
-	      // fetch all customers
 	      log.info("Rol encontrado con findAll():");
 	      log.info("-------------------------------");
-	      for (Rol rol : repository.findAll()) {
+	      for (Rol rol : repositoryRoles.findAll()) {
 	        log.info(rol.toString());
 	      }
 	      log.info("");
-
-	      // fetch an individual customer by ID
-	      Rol rol = repository.findById(1);
-	      log.info("Rol found with findById(1):");
+	      
+	      Rol rol = repositoryRoles.findById(1);
+	      log.info("Rol encontrado por findById(1):");
 	      log.info("--------------------------------");
 	      log.info(rol.toString());
+	      log.info("");
+	      
+	      
+	      Producto producto = repositoryProductos.findById(2);
+	      log.info("Producto encontrado por findById(2):");
+	      log.info("--------------------------------");
+	      log.info(producto.toString());
 	      log.info("");
 
 	    };

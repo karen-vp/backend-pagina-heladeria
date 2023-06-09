@@ -1,9 +1,9 @@
 package com.heladeria.app.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,11 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data 
-public class ProductoHasOrden {
+@Table(name="productos_has_ordenes")
+public class ProductHasOrden {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int ordenId;
+	private int productId;
+	@Id
 	private int usuarioId;
+	@Column(name="cantidad_productos", nullable=false)
+	private int cantidadProducto;
 	
 }
 
