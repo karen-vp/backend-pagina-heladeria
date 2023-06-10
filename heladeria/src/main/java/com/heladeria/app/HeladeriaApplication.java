@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.heladeria.app.repository.ProductRepository;
+import com.heladeria.app.repository.ProductoRepository;
 import com.heladeria.app.repository.RolRepository;
 import com.heladeria.app.entity.Producto;
 import com.heladeria.app.entity.Rol;
@@ -21,7 +21,7 @@ public class HeladeriaApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(RolRepository repositoryRoles, ProductRepository repositoryProductos) {
+	public CommandLineRunner demo(RolRepository repositoryRoles, ProductoRepository repositoryProductos) {
 	    return (args) -> {
 
 	      log.info("Rol encontrado con findAll():");
