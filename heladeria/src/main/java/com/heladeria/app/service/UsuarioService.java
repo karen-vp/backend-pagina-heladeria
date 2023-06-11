@@ -6,4 +6,10 @@ import com.heladeria.app.entity.Usuario;
 
 public interface UsuarioService {
 	List<Usuario> getAllUsuarios();
+	
+	Usuario createUsuario(Usuario usuario);
+	
+	void deleteUsuario(int id); 
+	
+	/*String updateUsuario (int id, Usuario usuario);*/
 }
