@@ -35,10 +35,15 @@ public class UsuarioController {
 		return "El usuario se borro correctamente!";
 	}
 	
-/*	@PutMapping("{id}")
+	@PutMapping("{id}")
     public String updateUsuario(@PathVariable int id, @RequestBody Usuario usuario) {
         usuarioService.updateUsuario(id, usuario);
         return "Usuario actualizado exitosamente";
-    }*/
+    }
+	
+	@GetMapping("{id}")  
+    public Usuario getUsuarioById(@PathVariable  int id) {
+		return usuarioService.getUsuarioById(id);
+    }
 }
   

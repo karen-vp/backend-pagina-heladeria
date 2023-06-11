@@ -36,7 +36,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	    }
 	}
 	
-	/*@Override
+	@Override
 	public String  updateUsuario(int id, Usuario usuario) {
 	    Usuario usuarioExistente = usuarioRepository.findById(id);
 	    usuarioExistente.setNombreUsuario(usuario.getNombreUsuario());
@@ -48,7 +48,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 	    usuarioRepository.save(usuarioExistente);
 	    return "El usuario se actualizo correctamente";
 	}
+	
+	@Override
+	public Usuario getUsuarioById(int id) {
+	    Usuario usuario = usuarioRepository.findById(id);
+	    return usuario;
+	}
 
-	*/
+	
 	
 }

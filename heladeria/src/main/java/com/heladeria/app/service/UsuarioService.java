@@ -11,5 +11,7 @@ public interface UsuarioService {
 	
 	void deleteUsuario(int id); 
 	
-	/*String updateUsuario (int id, Usuario usuario);*/
+	String updateUsuario (int id, Usuario usuario);
+	
+	Usuario getUsuarioById(int id); 
 }
