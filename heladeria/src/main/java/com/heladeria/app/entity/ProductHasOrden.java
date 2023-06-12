@@ -23,21 +23,31 @@ import lombok.NoArgsConstructor;
 public class ProductHasOrden {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="product_has_orden_id")
 	private int productHasOrdenId;
-	@Column(name="product_po_id", nullable=false)
-	private int productId;
-	@Column(name="orden_po_id", nullable=false)
-	private int ordenId;
+//	@Column(name="product_po_id", nullable=false)
+//	private int productId;
+//	@Column(name="orden_po_id", nullable=false)
+//	private int ordenId;
 	@Column(name="cantidad_productos", nullable=false)
 	private int cantidadProducto;
 	
-	@OneToMany
-	@JoinColumn(name="product_id")
-	private List<Producto> productos = new ArrayList<>();
+//	@OneToMany
+//	@JoinColumn(name="product_id")
+//	private List<Producto> productos = new ArrayList<>();
+//	
+//	@OneToMany
+//	@JoinColumn(name="orden_id") 
+//	private List<Orden> ordenes = new ArrayList<>();
+//	
 	
-	@OneToMany
+	@ManyToOne
+	@JoinColumn(name="product_id")
+	private Producto producto;
+	
+	@ManyToOne
 	@JoinColumn(name="orden_id") 
-	private List<Orden> ordenes = new ArrayList<>();
+	private Orden orden;
 	
 }
 

@@ -44,5 +44,6 @@ INSERT INTO ordenes(fk_usuarios_id) VALUES (1);
 INSERT INTO ordenes(fk_usuarios_id) VALUES (3);
 
 -- INSERT PRODUCTOS_HAS_ORDENES
-INSERT INTO productos_has_ordenes(product_po_id, orden_po_id, cantidad_productos) VALUES (1, 1, 2);
-INSERT INTO productos_has_ordenes(product_po_id, orden_po_id, cantidad_productos) VALUES (1, 1, 2);
+INSERT INTO productos_has_ordenes(product_id, orden_id, cantidad_productos) VALUES (1, 1, 2);
+INSERT INTO productos_has_ordenes(product_id, orden_id, cantidad_productos) VALUES (5, 1, 2);
+INSERT INTO productos_has_ordenes(product_id, orden_id, cantidad_productos) VALUES (2, 2 , 4);
