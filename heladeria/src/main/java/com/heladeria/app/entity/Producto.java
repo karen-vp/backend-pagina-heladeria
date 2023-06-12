@@ -30,4 +30,11 @@ public class Producto {
 	@Column(name="imagen", nullable=false, length=1000)
 	private String imagenProducto;
 	
+	@Override
+	  public String toString() {
+	    return String.format(
+	        "Producto: [id = %d,\n nombre = %s,\n precio = %d,\n descripción = %s,\n imagen = %s]",
+	        productoId, nombreProducto, precioProducto, descripcionProducto, imagenProducto);
+	  }
+	
 }
