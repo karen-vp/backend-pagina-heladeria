@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 public class Orden {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="orden_id")
 	private int ordenId;
 	@Column(name="fk_usuarios_id", nullable=false)
 	private int usuarioId;

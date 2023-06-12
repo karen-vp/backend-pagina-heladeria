@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.heladeria.app.dto.UsuarioDto;
 import com.heladeria.app.entity.Usuario;
 import com.heladeria.app.service.UsuarioService;
 
@@ -19,15 +20,35 @@ import com.heladeria.app.service.UsuarioService;
 public class UsuarioController {
 	@Autowired
 	UsuarioService usuarioService;
+	
+	// CRUD usando UsuarioDto
+	
 	@GetMapping
-    public List<Usuario> getAllUsuarios() {
-    List<Usuario> usuarios=  usuarioService.getAllUsuarios();
-    return usuarios;
+    public List<UsuarioDto> getAllUsuarios() {
+    return usuarioService.getAllUsuarios();
     }
+	
+	@PostMapping("signup")
+	public  UsuarioDto createUsuarioCliente(@RequestBody UsuarioDto usuarioDto){
+		UsuarioDto savedUsuario = usuarioService.createUsuarioCliente(usuarioDto);
+		return savedUsuario;		
+	}
+	
+	
+	// CRUD usando Usuario
+	
+//	@GetMapping
+//    public List<Usuario> getAllUsuarios() {
+//    List<Usuario> usuarios=  usuarioService.getAllUsuarios();
+//    return usuarios;
+//    }
+	
+	
 	@PostMapping
 	public Usuario createUsuario(@RequestBody Usuario usuario) {
 		return usuarioService.createUsuario(usuario);
 	}
+	
 	
 	@DeleteMapping("{id}")  
 	public String deleteUsuario(@PathVariable int id) {
@@ -41,9 +62,9 @@ public class UsuarioController {
         return "Usuario actualizado exitosamente";
     }
 	
-	@GetMapping("{id}")  
-    public Usuario getUsuarioById(@PathVariable  int id) {
-		return usuarioService.getUsuarioById(id);
-    }
+//	@GetMapping("{id}")  
+//    public Usuario getUsuarioById(@PathVariable  int id) {
+//		return usuarioService.getUsuarioById(id);
+//    }
 }
   

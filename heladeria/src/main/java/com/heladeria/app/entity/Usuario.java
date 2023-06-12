@@ -23,9 +23,16 @@ public class Usuario {
 	private String telefono; 
 	@Column(name="ubicacion", nullable=false, length=200)
 	private String ubicacion;
-	@Column(name="rol_id", nullable=false)
-	private int rolId;
+	/*@Column(name="rol_id", nullable=false)
+	private int rolId;*/
 	
+	// relacion muchos a uno bidireccional
+	@ManyToOne
+	@JoinColumn(name= "rol_id")
+	private Rol rol;
+	
+	
+
 	
 }
 

@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 public class Producto {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="product_id")
 	private int productoId;
 	@Column(name="nombre_producto", nullable=false, length=150)
 	private String nombreProducto;
