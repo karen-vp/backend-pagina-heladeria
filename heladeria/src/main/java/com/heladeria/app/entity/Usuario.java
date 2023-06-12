@@ -22,7 +22,7 @@ public class Usuario {
 	@Column(name="telefono", nullable=false, length=45)
 	private String telefono; 
 	@Column(name="ubicacion", nullable=false, length=200)
-	private String ubicación;
+	private String ubicacion;
 	@Column(name="rol_id", nullable=false)
 	private int rolId;
 	
