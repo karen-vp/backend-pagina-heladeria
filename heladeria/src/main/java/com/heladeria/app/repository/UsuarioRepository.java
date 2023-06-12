@@ -8,4 +8,5 @@ import com.heladeria.app.entity.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	Usuario findById(int id);
+
 }

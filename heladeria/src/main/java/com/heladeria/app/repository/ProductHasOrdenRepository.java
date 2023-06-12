@@ -1,10 +1,13 @@
-//package com.heladeria.app.repository;
-//
-//import org.springframework.data.repository.CrudRepository;
-//
-//import com.heladeria.app.entity.ProductHasOrden;
-//
-//
-//public interface ProductHasOrdenRepository extends CrudRepository<ProductHasOrden, Integer>{
-//	ProductHasOrden findById(int id);
-//}
+package com.heladeria.app.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+import com.heladeria.app.entity.ProductHasOrden;
+
+
+public interface ProductHasOrdenRepository extends JpaRepository<ProductHasOrden, Integer>{
+	Optional<ProductHasOrden> findById(int id);
+}

@@ -4,6 +4,8 @@ INSERT INTO categoria (nombre_categoria) VALUES("Helados Premium");
 INSERT INTO categoria (nombre_categoria) VALUES("Paletas");
 INSERT INTO categoria (nombre_categoria) VALUES("Aguas");
 
+
+
 -- INSERTS PRODUCTOS
 INSERT INTO productos (nombre_producto, precio, descripcion, categoria_id, imagen) VALUES("Chocolate", 35, "Sumérgete en un mundo de tentación y placer con el helado de chocolate. Este exquisito manjar combina la riqueza y suavidad del chocolate más fino con la cremosidad de un helado artesanal. Cada cucharada te envuelve en un deleite sedoso y indulgente que hace derretir tu paladar. Disfruta de la intensidad y el sabor profundo del chocolate, mientras se desliza suavemente en tu boca, despertando todos tus sentidos.", 1, "https://i.postimg.cc/nh1x6F9K/helado-choco.png");
 INSERT INTO productos (nombre_producto, precio, descripcion, categoria_id, imagen) VALUES("Oreo", 35, "Sumérgete en un placer celestial con el helado de galleta Oreo. Combina la suavidad del helado más delicado con el crujiente sabor de las icónicas galletas Oreo. Cada cucharada te ofrece una experiencia de texturas y sabores irresistibles. ¡Disfruta de este capricho delicioso y presume de tu elección única!", 1, "https://i.postimg.cc/85YfMB1C/helado-oreo.png");
@@ -11,6 +13,8 @@ INSERT INTO productos (nombre_producto, precio, descripcion, categoria_id, image
 INSERT INTO productos (nombre_producto, precio, descripcion, categoria_id, imagen) VALUES("Baileys", 45, "Sumérgete en una experiencia indulgente con nuestro helado Baileys. Con su suave y sedosa base de helado con sabor a licor de crema irlandesa, este postre te consentirá con su inigualable dulzura y sofisticación.", 2, "https://i.postimg.cc/1tXN8Y1T/helado-baileys.png" );
 INSERT INTO productos (nombre_producto, precio, descripcion, categoria_id, imagen) VALUES("Ferrero", 45, "Experimenta la perfección del chocolate y las avellanas en nuestro helado Ferrero. Con su combinación irresistible de helado de avellana y trozos de chocolate Ferrero Rocher, este helado es un verdadero placer para los amantes del chocolate y los frutos secos.", 2, "https://i.postimg.cc/7b8CQHJ8/helado-P-ferrero.png");
 INSERT INTO productos (nombre_producto, precio, descripcion, categoria_id, imagen) VALUES("M&M", 45, "Disfruta de la deliciosa combinación de helado cremoso y crujientes trozos de chocolate M&M. Este exquisito helado te brindará una explosión de sabores y texturas que deleitará tus sentidos.", 2,"https://i.postimg.cc/dV9BdXgt/helado-P-M-M.png" );
+
+
 
 -- PALETAS
 INSERT INTO productos (nombre_producto, precio, descripcion, categoria_id, imagen) VALUES("Maracuya", 35, "El clásico sabor de la vainilla se eleva a nuevas alturas en nuestro helado. Su textura suave y cremosa, junto con su exquisito sabor a vainilla, lo convierten en una elección atemporal y satisfactoria para los amantes de los helados tradicionales.", 3, "https://i.postimg.cc/nr0FqnKG/maracuya.png");
@@ -34,3 +38,11 @@ INSERT INTO usuarios (nombre_usuario, email, contraseña, telefono, ubicacion, r
 INSERT INTO usuarios (nombre_usuario, email, contraseña, telefono, ubicacion, rol_id) VALUES ("Claude Riegan", "claudcinhermosin@hotmail.com", "Lalalacontraseñawii","55-3789-0123", "Calle de los Sueños, Villa Esperanza, Fantasilandia.", 2);
 INSERT INTO usuarios (nombre_usuario, email, contraseña, telefono, ubicacion, rol_id) VALUES ("Lucina Everdeen", "LuceverH@gmail.com", "890Pass77word","55-6456-7890", "Carrera del Arco Iris, Colina Encantada, Reino de Fantasía.", 2);
 INSERT INTO usuarios (nombre_usuario, email, contraseña, telefono, ubicacion, rol_id) VALUES ("Chris Cavil", "cavilC@gmail.com", "Cuchurrumin","55-9234-5678", "Paseo de las Estrellas, Ciudad Celestial, Universo Infinito.",2 );
+
+-- INSERT ORDENES
+INSERT INTO ordenes(fk_usuarios_id) VALUES (1);
+INSERT INTO ordenes(fk_usuarios_id) VALUES (3);
+
+-- INSERT PRODUCTOS_HAS_ORDENES
+INSERT INTO productos_has_ordenes(product_po_id, orden_po_id, cantidad_productos) VALUES (1, 1, 2);
+INSERT INTO productos_has_ordenes(product_po_id, orden_po_id, cantidad_productos) VALUES (1, 1, 2);

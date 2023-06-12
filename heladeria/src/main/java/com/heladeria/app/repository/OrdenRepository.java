@@ -1,11 +1,14 @@
 package com.heladeria.app.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
 
 import com.heladeria.app.entity.Orden;
 
 
-public interface OrdenRepository extends CrudRepository<Orden, Integer>{
-	Orden findById(int id);
+public interface OrdenRepository extends JpaRepository<Orden, Integer>{
+	Optional<Orden> findById(int id);
 }
 
