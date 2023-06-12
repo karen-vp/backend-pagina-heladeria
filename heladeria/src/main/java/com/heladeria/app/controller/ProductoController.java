@@ -17,7 +17,7 @@ public class ProductoController {
     List<Producto> productos=  productoService.getAllProductos();
     return productos;
     }
-	@PostMapping
+	@PostMapping("create")
 	public Producto createProducto(@RequestBody Producto producto) {
 		return productoService.createProducto(producto);
 	}
