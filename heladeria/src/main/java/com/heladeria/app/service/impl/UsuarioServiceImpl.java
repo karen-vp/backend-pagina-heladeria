@@ -47,7 +47,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 			Usuario savedUsuario = usuarioRepository.save(usuario);
 			return UsuarioMapper.mapToUsuarioDto(savedUsuario);
 		} else {
-
 			throw new HeladeriaAppException(HttpStatus.BAD_REQUEST, "El rol con ID " + 2 + " no existe.");
 		}
 	}

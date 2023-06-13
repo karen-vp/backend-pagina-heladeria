@@ -21,6 +21,12 @@ public class ProductoServiceImpl implements ProductoService {
     }
 	
 	@Override
+	public Producto getProductoById(int id) {
+		Producto producto = productoRepository.findById(id);
+	    return producto;
+	}
+	
+	@Override
 	 public Producto createProducto (Producto producto) {
 		 return productoRepository.save(producto);
 	}
@@ -46,11 +52,7 @@ public class ProductoServiceImpl implements ProductoService {
 	    return "El usuario se actualizo correctamente";
 	}
 	
-	@Override
-	public Producto getProductoById(int id) {
-		Producto producto = productoRepository.findById(id);
-	    return producto;
-	}
+	
 
 	
 	
