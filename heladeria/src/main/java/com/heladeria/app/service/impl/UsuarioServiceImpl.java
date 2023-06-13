@@ -52,12 +52,35 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 	}
 	
-//	@Override
-//	public UsuarioDto getUsuarioById(int id) {
-//		Usuario existingUsuario = usuarioRepository.findById(id)
-//				.orElseThrow(()-> new ResourceNotFoundException("Usuario", "id", id));
-//		return UsuarioMapper.mapToUsuarioDto(existingUsuario);
-//	}
+	@Override
+	public UsuarioDto getUsuarioById(int id) {
+		Usuario existingUsuario = usuarioRepository.findById(id)
+				.orElseThrow(()-> new IllegalStateException("Usuario no encontrado " + id));
+		return UsuarioMapper.mapToUsuarioDto(existingUsuario);
+	}
+	
+	@Override
+	public UsuarioDto updateUsuario(UsuarioDto usuarioDto) {
+		Usuario existingUsuario = findUsuarioById(usuarioDto.getUsuarioId());
+		existingUsuario = UsuarioMapper.mapToUsuario(usuarioDto, existingUsuario);
+		usuarioRepository.save( existingUsuario );
+		return UsuarioMapper.mapToUsuarioDto(existingUsuario);
+	}
+	
+	@Override
+	public void deleteUsuario(int id) {
+		Usuario existingUsuario = findUsuarioById(id);
+		if (existingUsuario != null) {
+			usuarioRepository.delete(existingUsuario);
+		}
+	}
+	
+	@Override
+	public Usuario findUsuarioById(int id) {
+		Usuario existingUsuario = usuarioRepository.findById(id)
+				.orElseThrow( ()-> new IllegalStateException("User does not exist with id " + id) );				
+		return existingUsuario;
+	}
 
 	// CRUD usando Usuario
 	
@@ -67,31 +90,31 @@ public class UsuarioServiceImpl implements UsuarioService {
 //    return usuarios;
 //    }
 
-	@Override
-	public Usuario createUsuario(Usuario usuario) {
-		return usuarioRepository.save(usuario);
-	}
+//	@Override
+//	public Usuario createUsuario(Usuario usuario) {
+//		return usuarioRepository.save(usuario);
+//	}
 
-	@Override
-	public void deleteUsuario(int id) {
-		Usuario usuario = usuarioRepository.findById(id);
-		if (usuario != null) {
-			usuarioRepository.delete(usuario);
-		}
-	}
+//	@Override
+//	public void deleteUsuario(int id) {
+//		Usuario usuario = usuarioRepository.findById(id);
+//		if (usuario != null) {
+//			usuarioRepository.delete(usuario);
+//		}
+//	}
 
-	@Override
-	public String updateUsuario(int id, Usuario usuario) {
-		Usuario usuarioExistente = usuarioRepository.findById(id);
-		usuarioExistente.setNombreUsuario(usuario.getNombreUsuario());
-		usuarioExistente.setEmailUsuario(usuario.getEmailUsuario());
-		usuarioExistente.setContraseña(usuario.getContraseña());
-		usuarioExistente.setTelefono(usuario.getTelefono());
-		usuarioExistente.setUbicacion(usuario.getUbicacion());
-
-		usuarioRepository.save(usuarioExistente);
-		return "El usuario se actualizo correctamente";
-	}
+//	@Override
+//	public String updateUsuario(int id, Usuario usuario) {
+//		Usuario usuarioExistente = usuarioRepository.findById(id);
+//		usuarioExistente.setNombreUsuario(usuario.getNombreUsuario());
+//		usuarioExistente.setEmailUsuario(usuario.getEmailUsuario());
+//		usuarioExistente.setContraseña(usuario.getContraseña());
+//		usuarioExistente.setTelefono(usuario.getTelefono());
+//		usuarioExistente.setUbicacion(usuario.getUbicacion());
+//
+//		usuarioRepository.save(usuarioExistente);
+//		return "El usuario se actualizo correctamente";
+//	}
 
 //	@Override
 //	public Usuario getUsuarioById(int id) {

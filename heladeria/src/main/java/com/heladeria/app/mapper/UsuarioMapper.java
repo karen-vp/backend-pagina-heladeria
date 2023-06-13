@@ -44,4 +44,21 @@ public class UsuarioMapper {
 			
 			return usuario;
 		}
+		
+		/**
+		 * Convierte un objeto de tipo UsuarioDto a Usuario
+		 * @param customerDto
+		 * @return customer
+		 */
+		public static Usuario mapToUsuario(UsuarioDto usuarioDto, Usuario usuario) {
+				
+			usuario.setUsuarioId( usuarioDto.getUsuarioId() );
+			usuario.setNombreUsuario( usuarioDto.getNombreUsuario() );
+			usuario.setEmailUsuario( usuarioDto.getEmailUsuario() );
+			usuario.setContraseña( usuarioDto.getContraseña() );
+			usuario.setTelefono( usuarioDto.getTelefono() );
+			usuario.setUbicacion( usuarioDto.getUbicacion() );
+			
+			return usuario;
+		}
 }

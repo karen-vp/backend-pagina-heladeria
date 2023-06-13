@@ -11,16 +11,23 @@ public interface UsuarioService {
 	
 	UsuarioDto createUsuarioCliente(UsuarioDto usuarioDto);
 	
-//	UsuarioDto getUsuarioById(int id);
+	UsuarioDto getUsuarioById(int id);
+	
+	Usuario findUsuarioById(int id);
+	
+	void deleteUsuario(int id); 
+	
+	UsuarioDto updateUsuario(UsuarioDto usuarioDto);
+	
 //CRUD usando Usuario
 	
 //	List<Usuario> getAllUsuarios();
 	
-	Usuario createUsuario(Usuario usuario);
+//	Usuario createUsuario(Usuario usuario);
 	
-	void deleteUsuario(int id); 
+//	void deleteUsuario(int id); 
 	
-	String updateUsuario (int id, Usuario usuario);
+//	String updateUsuario (int id, Usuario usuario);
 	
 	//Usuario getUsuarioById(int id); 
 }
