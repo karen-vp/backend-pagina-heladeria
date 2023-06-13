@@ -36,6 +36,7 @@ public class GlobalExceptionHandler {
 		return response;
 	}
 	
+	
 	@ExceptionHandler( HeladeriaAppException.class )
 	public ResponseEntity<String> handleHeladeriaAppException(Exception exception) {
 		ResponseEntity<String> response = new ResponseEntity<>(
