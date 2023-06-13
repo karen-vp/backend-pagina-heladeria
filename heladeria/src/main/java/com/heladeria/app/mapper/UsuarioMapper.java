@@ -47,8 +47,8 @@ public class UsuarioMapper {
 		
 		/**
 		 * Convierte un objeto de tipo UsuarioDto a Usuario
-		 * @param customerDto
-		 * @return customer
+		 * @param usuarioDto
+		 * @return usuario
 		 */
 		public static Usuario mapToUsuario(UsuarioDto usuarioDto, Usuario usuario) {
 				
