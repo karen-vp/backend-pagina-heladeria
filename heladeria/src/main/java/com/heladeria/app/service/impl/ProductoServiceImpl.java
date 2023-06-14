@@ -1,18 +1,18 @@
 package com.heladeria.app.service.impl;
 
 import java.util.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.heladeria.app.entity.Producto;
 import com.heladeria.app.repository.ProductoRepository;
 import com.heladeria.app.service.ProductoService;
-import jakarta.persistence.Column;
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 @Service
 public class ProductoServiceImpl implements ProductoService {
 	
+	@Autowired
 	ProductoRepository productoRepository;
 	@Override
     public List<Producto> getAllProductos() {
@@ -52,7 +52,11 @@ public class ProductoServiceImpl implements ProductoService {
 	    return "El usuario se actualizo correctamente";
 	}
 	
-	
+	@Override
+	public List<Producto> getProductoByNombre(String nombre) {
+		List<Producto> producto = productoRepository.findByNombre(nombre);
+	    return producto;
+	}	
 
 	
 	

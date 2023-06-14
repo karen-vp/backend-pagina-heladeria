@@ -38,5 +38,10 @@ public class ProductoController {
     public Producto getProductoById(@PathVariable  int id) {
 		return productoService.getProductoById(id);
     }
+	
+	@GetMapping("query")  
+    public List<Producto> getProductoByName(@RequestParam(value = "nombre") String nombre) {
+		return productoService.getProductoByNombre(nombre);
+    }
 }
   

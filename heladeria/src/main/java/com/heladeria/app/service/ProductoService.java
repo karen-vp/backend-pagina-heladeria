@@ -15,4 +15,6 @@ public interface ProductoService {
 	
 	Producto getProductoById(int id); 
 	
+	List<Producto> getProductoByNombre(String nombre);
+	
 }
