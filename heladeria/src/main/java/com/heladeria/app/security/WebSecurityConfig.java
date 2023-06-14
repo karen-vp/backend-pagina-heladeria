@@ -56,7 +56,7 @@ public class WebSecurityConfig {
 						authorize
 						// STEP 5 Agregar las reglas de autorización para los endpoints
 						// Para la url /api/customers/active puede realizarse sin autenticarse
-						.requestMatchers(HttpMethod.GET, "/api/products").permitAll()
+						.requestMatchers(HttpMethod.GET, "/api/productos").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/usuarios/signup").permitAll()
 						.requestMatchers(HttpMethod.PUT, "/api/usuarios/{id}").hasRole("CLIENTE")
 						.requestMatchers("/api/producthasordenes").hasRole("CLIENTE")
