@@ -11,6 +11,8 @@ public interface UsuarioService {
 	
 	UsuarioDto createUsuarioCliente(UsuarioDto usuarioDto);
 	
+	UsuarioDto createUsuarioAdmin(UsuarioDto usuarioDto);
+	
 	UsuarioDto getUsuarioById(int id);
 	
 	Usuario findUsuarioById(int id);

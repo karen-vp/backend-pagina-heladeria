@@ -61,8 +61,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		//  STEP 23 hacer un cast de authResult para los detalles del usuario autenticado
 		UserDetailsImpl userDetails = (UserDetailsImpl) authResult.getPrincipal();
 		
-		// STEP 24 crear el toke
-//		String token = "Hola Ch26, están con mucho silencio, aiuda"; // TODO crear utiliza para generar el token
+		// STEP 24 crear el token
 		String token = JwtTokenUtils.createToken( 
 				  userDetails.getUsername()
 				, userDetails.getAuthorities());
