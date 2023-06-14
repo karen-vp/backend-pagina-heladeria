@@ -9,6 +9,7 @@ import com.heladeria.app.service.ProductoService;
 
 @RestController
 @RequestMapping("api/productos")
+@CrossOrigin(origins="*")
 public class ProductoController {
 	@Autowired
 	ProductoService productoService;
@@ -37,6 +38,11 @@ public class ProductoController {
 	@GetMapping("{id}")  
     public Producto getProductoById(@PathVariable  int id) {
 		return productoService.getProductoById(id);
+    }
+	
+	@GetMapping("buscar/{nombre}")  
+    public List<Producto> getProductoByName(@PathVariable String nombre) {
+		return productoService.getProductoByNombre(nombre);
     }
 }
   

@@ -57,10 +57,11 @@ public class WebSecurityConfig {
 						// STEP 5 Agregar las reglas de autorización para los endpoints
 						// Para la url /api/customers/active puede realizarse sin autenticarse
 						.requestMatchers(HttpMethod.GET, "/api/productos").permitAll()
+						.requestMatchers(HttpMethod.GET, "api/productos/buscar/{nombre}").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/usuarios/signup").permitAll()
 						.requestMatchers(HttpMethod.PUT, "/api/usuarios/{id}").hasRole("CLIENTE")
 						.requestMatchers("/api/producthasordenes").hasRole("CLIENTE")
-						.requestMatchers(HttpMethod.GET,"/api/usuarios").hasRole("ADMIN")	
+						.requestMatchers(HttpMethod.GET,"/api/usuarios").hasRole("ADMIN")
 						.requestMatchers(HttpMethod.GET,"/api/usuarios/{id}").hasRole("ADMIN")
 						.requestMatchers(HttpMethod.POST,"/api/usuarios/signup/admin").hasRole("ADMIN")
 						.requestMatchers(HttpMethod.PUT,"/api/usuarios/{id}").hasRole("ADMIN")	
