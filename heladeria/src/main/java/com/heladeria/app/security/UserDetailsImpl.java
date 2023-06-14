@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
-
 import com.heladeria.app.entity.Usuario;
+
 
 
 // STEP 12 Crear la clase que implementa la interfaz UserDetails
@@ -23,14 +21,23 @@ public class UserDetailsImpl implements UserDetails {
 		this.usuario = usuario;
 	}
 
+//	@Override
+//	public Collection<? extends GrantedAuthority> getAuthorities() {
+//		List<GrantedAuthority> authorities = new ArrayList<>();
+//		
+//		authorities.add(  new SimpleGrantedAuthority("ROLE_ADMIN") );
+//		//authorities.add(  new SimpleGrantedAuthority("ROLE_CUSTOMER") );
+//		return authorities;
+//	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> authorities = new ArrayList<>();
-		
-		authorities.add(  new SimpleGrantedAuthority("ROLE_ADMIN") );
-		//authorities.add(  new SimpleGrantedAuthority("ROLE_CUSTOMER") );
-		return authorities;
+	    List<GrantedAuthority> authorities = new ArrayList<>();
+	    String rolConPrefijo = "ROLE_" + usuario.getRol().getRolNombre().toUpperCase();
+	    authorities.add(new SimpleGrantedAuthority(rolConPrefijo));
+	    return authorities;
 	}
+	
 
 	@Override
 	public String getPassword() {

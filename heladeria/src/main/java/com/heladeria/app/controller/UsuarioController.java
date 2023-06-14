@@ -39,6 +39,12 @@ public class UsuarioController {
 		UsuarioDto savedUsuario = usuarioService.createUsuarioCliente(usuarioDto);
 		return savedUsuario;
 	}
+	
+	@PostMapping("signup/admin")
+	public UsuarioDto createUsuarioAdmin(@RequestBody UsuarioDto usuarioDto) {
+		UsuarioDto savedUsuario = usuarioService.createUsuarioAdmin(usuarioDto);
+		return savedUsuario;
+	}
 
 	@PutMapping("{id}")
     public UsuarioDto updateUsuario(@PathVariable int id, @RequestBody UsuarioDto usuarioDto) {

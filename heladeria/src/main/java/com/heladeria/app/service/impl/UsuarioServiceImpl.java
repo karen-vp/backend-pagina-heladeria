@@ -50,6 +50,22 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 	}
 	
+	public UsuarioDto createUsuarioAdmin(UsuarioDto usuarioDto) {
+		// TODO Verificar si el email existe
+		// TODO Verificar que los atributos estén dentro de los parámetros establecido.
+		Usuario usuario = UsuarioMapper.mapToUsuario(usuarioDto);
+		usuario.setUsuarioId(0);
+
+		Rol rol = rolRepository.findById(1);
+		if (rol != null) {
+			usuario.setRol(rol);
+			Usuario savedUsuario = usuarioRepository.save(usuario);
+			return UsuarioMapper.mapToUsuarioDto(savedUsuario);
+		} else {
+			throw new HeladeriaAppException(HttpStatus.BAD_REQUEST, "El rol con ID " + 1 + " no existe.");
+		}
+	}
+	
 	@Override
 	public UsuarioDto getUsuarioById(int id) {
 		Usuario existingUsuario = usuarioRepository.findById(id)
