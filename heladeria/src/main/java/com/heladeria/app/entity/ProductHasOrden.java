@@ -29,18 +29,19 @@ public class ProductHasOrden {
 //	private int productId;
 //	@Column(name="orden_po_id", nullable=false)
 //	private int ordenId;
+
 	@Column(name="cantidad_productos", nullable=false)
 	private int cantidadProducto;
 	
 //	@OneToMany
 //	@JoinColumn(name="product_id")
-//	private List<Producto> productos = new ArrayList<>();
-//	
+//	private List<Producto> productos;
+	
 //	@OneToMany
 //	@JoinColumn(name="orden_id") 
 //	private List<Orden> ordenes = new ArrayList<>();
-//	
 	
+
 	@ManyToOne
 	@JoinColumn(name="product_id")
 	private Producto producto;

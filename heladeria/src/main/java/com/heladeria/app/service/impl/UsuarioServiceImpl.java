@@ -15,8 +15,7 @@ import com.heladeria.app.repository.RolRepository;
 import com.heladeria.app.repository.UsuarioRepository;
 import com.heladeria.app.service.UsuarioService;
 import lombok.AllArgsConstructor;
-import java.util.Optional;
-import java.util.function.Supplier;
+
 
 @AllArgsConstructor
 @Service
