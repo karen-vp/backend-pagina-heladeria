@@ -1,6 +1,7 @@
 package com.heladeria.app.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,14 @@ public class ProductHasOrdenServiceImpl implements ProductHasOrdenService{
 	public ProductHasOrden updateProductHasOrden(int id, ProductHasOrden productHasOrden) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<ProductHasOrden> getProductHasOrdenByOrdenId(int id) {
+		// TODO Auto-generated method stub
+						
+		return null;
+	
 	}
 
 }

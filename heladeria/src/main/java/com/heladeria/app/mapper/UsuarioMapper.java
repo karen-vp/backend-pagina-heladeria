@@ -1,6 +1,8 @@
 package com.heladeria.app.mapper;
 
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import com.heladeria.app.dto.UsuarioDto;
 import com.heladeria.app.entity.Usuario;
 
@@ -38,7 +40,7 @@ public class UsuarioMapper {
 			usuario.setUsuarioId( usuarioDto.getUsuarioId() );
 			usuario.setNombreUsuario( usuarioDto.getNombreUsuario() );
 			usuario.setEmailUsuario( usuarioDto.getEmailUsuario() );
-			usuario.setContraseña( usuarioDto.getContraseña() );
+			usuario.setContraseña(new BCryptPasswordEncoder().encode(usuarioDto.getContraseña()) );
 			usuario.setTelefono( usuarioDto.getTelefono() );
 			usuario.setUbicacion( usuarioDto.getUbicacion() );
 			
@@ -55,7 +57,7 @@ public class UsuarioMapper {
 			usuario.setUsuarioId( usuarioDto.getUsuarioId() );
 			usuario.setNombreUsuario( usuarioDto.getNombreUsuario() );
 			usuario.setEmailUsuario( usuarioDto.getEmailUsuario() );
-			usuario.setContraseña( usuarioDto.getContraseña() );
+			usuario.setContraseña( new BCryptPasswordEncoder().encode(usuarioDto.getContraseña()));
 			usuario.setTelefono( usuarioDto.getTelefono() );
 			usuario.setUbicacion( usuarioDto.getUbicacion() );
 			
