@@ -59,6 +59,8 @@ public class WebSecurityConfig {
 						.requestMatchers(HttpMethod.GET, "/api/productos").permitAll()
 						.requestMatchers(HttpMethod.GET, "api/productos/buscar/{nombre}").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/usuarios/signup").permitAll()
+						.requestMatchers(HttpMethod.GET, "/api/productordenes").permitAll()
+						.requestMatchers(HttpMethod.GET, "/api/productordenes/{id}").permitAll()
 						.requestMatchers(HttpMethod.PUT, "/api/usuarios/{id}").hasRole("CLIENTE")
 						.requestMatchers("/api/producthasordenes").hasRole("CLIENTE")
 						.requestMatchers(HttpMethod.GET,"/api/usuarios").hasRole("ADMIN")

@@ -26,10 +26,10 @@ public class ProductHasOrdenServiceImpl implements ProductHasOrdenService{
 	}
 
 	@Override
-	public ProductHasOrden getProductHasOrdenById(int id) {
+	public List<ProductHasOrden> getProductHasOrdenById(int id) {
 		// TODO Auto-generated method stub
-		ProductHasOrden productHasOrden = productHasOrdenRepository.findById(id)
-				.orElseThrow(()-> new IllegalStateException("productHasOrden no encontrada " + id) );;
+		List<ProductHasOrden> productHasOrden = productHasOrdenRepository.findByOrderId(id);
+				//.orElseThrow(()-> new IllegalStateException("productHasOrden no encontrada " + id) );;
 				return productHasOrden;
 		
 	}

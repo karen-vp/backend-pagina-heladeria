@@ -9,7 +9,7 @@ public interface ProductHasOrdenService {
 
 	List<ProductHasOrden> getAllProductHasOrden();
 
-	ProductHasOrden getProductHasOrdenById(int id);
+	List<ProductHasOrden> getProductHasOrdenById(int id);
 	
 	List<ProductHasOrden> getProductHasOrdenByOrdenId(int id);
 

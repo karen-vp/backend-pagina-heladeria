@@ -27,10 +27,10 @@ public class ProductHasOrdenController {
 	}
 	
 	@GetMapping("{id}")
-	public ProductHasOrden getProductHasOrdenById(@PathVariable int id) {
+	public List<ProductHasOrden> getProductHasOrdenById(@PathVariable int id) {
 		// TODO Auto-generated method stub
-		ProductHasOrden productHasOrden = productHasOrdenRepository.findById(id)
-				.orElseThrow(()-> new IllegalStateException("productHasOrden no encontrada " + id) );;
+		List<ProductHasOrden> productHasOrden = productHasOrdenRepository.findByOrderId(id);
+				//.orElseThrow(()-> new IllegalStateException("productHasOrden no encontrada " + id) );;
 		return productHasOrden;
 	}
 	
