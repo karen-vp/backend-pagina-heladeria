@@ -19,6 +19,14 @@ public class ProductHasOrdenServiceImpl implements ProductHasOrdenService{
 	ProductHasOrdenRepository productHasOrdenRepository;
 	
 	@Override
+	public ProductHasOrden getProductOrdenById(int id) {
+		// TODO Auto-generated method stub
+		ProductHasOrden productHasOrdenExistente = productHasOrdenRepository.findById(id)
+				.orElseThrow(()-> new IllegalStateException("Registro de carrito no encontrada " + id) );
+		return productHasOrdenExistente;
+	}
+	
+	@Override
 	public List<ProductHasOrden> getAllProductHasOrden() {
 		// TODO Auto-generated method stub
 		List<ProductHasOrden> productHasOrden = productHasOrdenRepository.findAll();
@@ -26,38 +34,42 @@ public class ProductHasOrdenServiceImpl implements ProductHasOrdenService{
 	}
 
 	@Override
-	public List<ProductHasOrden> getProductHasOrdenById(int id) {
+	public List<ProductHasOrden> getProductHasOrdenByOrdenId(int id) {
 		// TODO Auto-generated method stub
 		List<ProductHasOrden> productHasOrden = productHasOrdenRepository.findByOrderId(id);
-				//.orElseThrow(()-> new IllegalStateException("productHasOrden no encontrada " + id) );;
-				return productHasOrden;
+				
+		return productHasOrden;
 		
 	}
 
 	@Override
 	public ProductHasOrden createProductHasOrden(ProductHasOrden productHasOrden) {
 		// TODO Auto-generated method stub
-		return null;
+		return productHasOrdenRepository.save(productHasOrden);
 	}
 
 	@Override
 	public void deleteProductHasOrden(int id) {
 		// TODO Auto-generated method stub
+		ProductHasOrden productHasOrdenExistente = productHasOrdenRepository.findById(id)
+				.orElseThrow(()-> new IllegalStateException("Registro de carrito no encontrada " + id) );
+	    if (productHasOrdenExistente!= null) {
+	    	productHasOrdenRepository.delete(productHasOrdenExistente);
+	    }
 		
 	}
 
 	@Override
 	public ProductHasOrden updateProductHasOrden(int id, ProductHasOrden productHasOrden) {
 		// TODO Auto-generated method stub
-		return null;
+		ProductHasOrden productHasOrdenExistente = productHasOrdenRepository.findById(id)
+				.orElseThrow(()-> new IllegalStateException("Registro de carrito no encontrada " + id) );
+		productHasOrdenExistente.setProductHasOrdenId(productHasOrden.getProductHasOrdenId());
+		productHasOrdenRepository.save(productHasOrdenExistente);
+		return productHasOrdenExistente;
 	}
 
-	@Override
-	public List<ProductHasOrden> getProductHasOrdenByOrdenId(int id) {
-		// TODO Auto-generated method stub
-						
-		return null;
 	
-	}
+
 
 }

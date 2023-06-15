@@ -25,11 +25,6 @@ public class ProductHasOrden {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="product_has_orden_id")
 	private int productHasOrdenId;
-//	@Column(name="product_po_id", nullable=false)
-//	private int productId;
-//	@Column(name="orden_po_id", nullable=false)
-//	private int ordenId;
-
 	@Column(name="cantidad_productos", nullable=false)
 	private int cantidadProducto;
 	

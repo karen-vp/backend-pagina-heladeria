@@ -8,10 +8,10 @@ import com.heladeria.app.entity.ProductHasOrden;
 public interface ProductHasOrdenService {
 
 	List<ProductHasOrden> getAllProductHasOrden();
-
-	List<ProductHasOrden> getProductHasOrdenById(int id);
 	
 	List<ProductHasOrden> getProductHasOrdenByOrdenId(int id);
+	
+	ProductHasOrden getProductOrdenById(int id);
 
 	ProductHasOrden createProductHasOrden(ProductHasOrden productHasOrden);
 
