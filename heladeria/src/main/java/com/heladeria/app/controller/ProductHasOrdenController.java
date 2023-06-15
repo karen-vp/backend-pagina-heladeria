@@ -3,6 +3,7 @@ package com.heladeria.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import com.heladeria.app.repository.ProductHasOrdenRepository;
 
 @RestController
 @RequestMapping("api/productordenes")
+@CrossOrigin(origins="*")
 public class ProductHasOrdenController {
 
 	@Autowired
@@ -33,5 +35,7 @@ public class ProductHasOrdenController {
 				//.orElseThrow(()-> new IllegalStateException("productHasOrden no encontrada " + id) );;
 		return productHasOrden;
 	}
+	
+	
 	
 }
