@@ -31,18 +31,18 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public Usuario createUsuarioCliente(Usuario usuario) {
 		usuario.setUsuarioId(0);
+		
 		Optional<Usuario> existingUser = usuarioRepository.findByEmailUsuario(usuario.getEmailUsuario());
 	    if (existingUser.isPresent()) {
 	        throw new HeladeriaAppException(HttpStatus.BAD_REQUEST, "El correo electrónico ya está registrado.");
 	    }
-	  
-				Rol rol = rolRepository.findById(2);
-				if (rol != null) {
-					usuario.setRol(rol);
-					return usuarioRepository.save(usuario);
-				} else {
-					throw new HeladeriaAppException(HttpStatus.BAD_REQUEST, "El rol con ID " + 2 + " no existe.");
-				}
+	  	Rol rol = rolRepository.findById(2);
+	  	if (rol != null) {
+			usuario.setRol(rol);
+			return usuarioRepository.save(usuario);
+		} else {
+			throw new HeladeriaAppException(HttpStatus.BAD_REQUEST, "El rol con ID " + 2 + " no existe.");
+		}
 	}
 
 	@Override
