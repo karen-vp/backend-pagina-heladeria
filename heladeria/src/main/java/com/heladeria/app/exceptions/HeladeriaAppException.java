@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class HeladeriaAppException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
@@ -14,11 +13,10 @@ public class HeladeriaAppException extends RuntimeException{
 	private HttpStatus estado;
 	private String mensaje;
 	
-	public HeladeriaAppException(HttpStatus estado, String mensaje, String mensaje1) {
-		super();
+	public HeladeriaAppException(HttpStatus estado, String mensaje) {
+		super(mensaje);
 		this.estado = estado;
 		this.mensaje = mensaje;
-		this.mensaje = mensaje1;
 	}
 	
 	
