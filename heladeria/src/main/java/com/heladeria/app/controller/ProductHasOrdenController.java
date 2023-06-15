@@ -12,20 +12,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.heladeria.app.entity.Orden;
 import com.heladeria.app.entity.ProductHasOrden;
 import com.heladeria.app.repository.ProductHasOrdenRepository;
 
 @RestController
-@RequestMapping("api/productordenes")
+@RequestMapping("api/carrito")
 @CrossOrigin(origins="*")
 public class ProductHasOrdenController {
 
 	@Autowired
 	ProductHasOrdenRepository productHasOrdenRepository;
 	
-	@PutMapping("{id}")
+	@GetMapping("{id}")
 	public ProductHasOrden getProductOrdenById(@PathVariable int id) {
 		// TODO Auto-generated method stub
 		ProductHasOrden productHasOrdenExistente = productHasOrdenRepository.findById(id)
@@ -40,7 +38,7 @@ public class ProductHasOrdenController {
 		return productHasOrden;
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("orden/{id}")
 	public List<ProductHasOrden> getProductHasOrdenByOrdenId(@PathVariable int id) {
 		// TODO Auto-generated method stub
 		List<ProductHasOrden> productHasOrden = productHasOrdenRepository.findByOrderId(id);
