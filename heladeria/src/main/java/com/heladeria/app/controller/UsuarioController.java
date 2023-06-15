@@ -3,6 +3,7 @@ package com.heladeria.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.heladeria.app.dto.UsuarioDto;
 import com.heladeria.app.entity.Usuario;
+import com.heladeria.app.exceptions.HeladeriaAppException;
 import com.heladeria.app.service.UsuarioService;
 
 @RestController
 @RequestMapping("api/usuarios")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class UsuarioController {
 	@Autowired
 	UsuarioService usuarioService;
@@ -27,31 +29,30 @@ public class UsuarioController {
 	// CRUD usando Usuario
 
 	@GetMapping
-    public List<Usuario> getAllUsuarios() {
-    List<Usuario> usuarios=  usuarioService.getAllUsuarios();
-    return usuarios;
-    }
+	public List<Usuario> getAllUsuarios() {
+		List<Usuario> usuarios = usuarioService.getAllUsuarios();
+		return usuarios;
+	}
 
-	
 	@PostMapping("signup")
 	public Usuario createUsuarioCliente(@RequestBody Usuario usuario) {
 		return usuarioService.createUsuarioCliente(usuario);
 	}
 
-	@DeleteMapping("{id}")  
+	@DeleteMapping("{id}")
 	public String deleteUsuario(@PathVariable int id) {
 		usuarioService.deleteUsuario(id);
 		return "El usuario se borro correctamente!";
 	}
 
 	@PutMapping("{id}")
-    public String updateUsuario(@PathVariable int id, @RequestBody Usuario usuario) {
-        usuarioService.updateUsuario(id, usuario);
-        return "Usuario actualizado exitosamente";
-    }
+	public String updateUsuario(@PathVariable int id, @RequestBody Usuario usuario) {
+		usuarioService.updateUsuario(id, usuario);
+		return "Usuario actualizado exitosamente";
+	}
 
-	@GetMapping("{id}")  
-    public Usuario getUsuarioById(@PathVariable  int id) {
+	@GetMapping("{id}")
+	public Usuario getUsuarioById(@PathVariable int id) {
 		return usuarioService.getUsuarioById(id);
-    }
+	}
 }

@@ -19,38 +19,41 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	RolRepository rolRepository;
 
-
 	// CRUD usando Usuario
 
 	@Override
 	public List<Usuario> getAllUsuarios() {
 		List<Usuario> usuarios = usuarioRepository.findAll();
-		return usuarios;
+		if (usuarios != null) {
+			return usuarios;
+		} else {
+			throw new HeladeriaAppException(HttpStatus.NOT_FOUND, "No se encontro la lista de usuarios");
+		}
 	}
 
 	@Override
 	public Usuario createUsuarioCliente(Usuario usuario) {
-		
-    usuario.setUsuarioId(0);
-    
+
+		usuario.setUsuarioId(0);
+
 		Optional<Usuario> existingUser = usuarioRepository.findByEmailUsuario(usuario.getEmailUsuario());
-	    if (existingUser.isPresent()) {
-	        throw new HeladeriaAppException(HttpStatus.BAD_REQUEST, "El correo electrónico ya está registrado.");
-	    }
+		if (existingUser.isPresent()) {
+			throw new HeladeriaAppException(HttpStatus.BAD_REQUEST, "El correo electrónico ya está registrado.");
+		}
 
 		Rol rol = rolRepository.findById(2);
-			if (rol != null) {
-				usuario.setRol(rol);
-					return usuarioRepository.save(usuario);
+		if (rol != null) {
+			usuario.setRol(rol);
+			return usuarioRepository.save(usuario);
 		} else {
-				throw new HeladeriaAppException(HttpStatus.BAD_REQUEST, "El rol con ID " + 2 + " no existe.");
+			throw new HeladeriaAppException(HttpStatus.BAD_REQUEST, "El rol con ID " + 2 + " no existe.");
 		}
 	}
 
 	@Override
 	public void deleteUsuario(int id) {
 		Usuario usuario = usuarioRepository.findById(id)
-				.orElseThrow(() -> new IllegalStateException("User does not exist with id " + id));
+				.orElseThrow(() -> new IllegalStateException("El Usuario con el  " + id + " no existe"));
 		if (usuario != null) {
 			usuarioRepository.delete(usuario);
 		}
@@ -59,23 +62,25 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public String updateUsuario(int id, Usuario usuario) {
 		Usuario usuarioExistente = usuarioRepository.findById(id)
-				.orElseThrow(() -> new IllegalStateException("User does not exist with id " + id));
-		;
-		usuarioExistente.setNombreUsuario(usuario.getNombreUsuario());
-		usuarioExistente.setEmailUsuario(usuario.getEmailUsuario());
-		usuarioExistente.setContraseña(usuario.getContraseña());
-		usuarioExistente.setTelefono(usuario.getTelefono());
-		usuarioExistente.setUbicacion(usuario.getUbicacion());
+				.orElseThrow(() -> new IllegalStateException("El Usuario con el  " + id + " no existe"));
+		if (usuario != null) {
+			usuarioExistente.setNombreUsuario(usuario.getNombreUsuario());
+			usuarioExistente.setEmailUsuario(usuario.getEmailUsuario());
+			usuarioExistente.setContraseña(usuario.getContraseña());
+			usuarioExistente.setTelefono(usuario.getTelefono());
+			usuarioExistente.setUbicacion(usuario.getUbicacion());
 
-		usuarioRepository.save(usuarioExistente);
-		return "El usuario se actualizo correctamente";
+			usuarioRepository.save(usuarioExistente);
+			return "El usuario se actualizo correctamente";
+		} else {
+			throw new HeladeriaAppException(HttpStatus.BAD_REQUEST, "El Usuario con ID " + id + " no existe.");
+		}
 	}
 
 	@Override
 	public Usuario getUsuarioById(int id) {
 		Usuario usuario = usuarioRepository.findById(id)
-				.orElseThrow(() -> new IllegalStateException("User does not exist with id " + id));
-		;
+				.orElseThrow(() -> new IllegalStateException("El Usuario con el  " + id + " no existe"));
 		return usuario;
 	}
 
