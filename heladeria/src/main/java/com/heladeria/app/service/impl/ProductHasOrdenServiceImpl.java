@@ -75,7 +75,7 @@ public class ProductHasOrdenServiceImpl implements ProductHasOrdenService {
 				.orElseThrow(() -> new IllegalStateException("Registro de carrito no encontrada " + id));
 		if (productHasOrdenExistente != null) {
 
-			productHasOrdenExistente.setProductHasOrdenId(productHasOrden.getProductHasOrdenId());
+//			productHasOrdenExistente.setProductHasOrdenId(productHasOrden.getProductHasOrdenId());
 			productHasOrdenExistente.setCantidadProducto(productHasOrden.getCantidadProducto());
 			productHasOrdenExistente.setOrden(productHasOrden.getOrden());
 			productHasOrdenExistente.setProducto(productHasOrden.getProducto());
