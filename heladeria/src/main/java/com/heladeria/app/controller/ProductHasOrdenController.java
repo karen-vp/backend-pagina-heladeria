@@ -13,58 +13,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.heladeria.app.entity.ProductHasOrden;
-import com.heladeria.app.repository.ProductHasOrdenRepository;
+import com.heladeria.app.service.ProductHasOrdenService;
 
 @RestController
 @RequestMapping("api/carrito")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class ProductHasOrdenController {
 
 	@Autowired
-	ProductHasOrdenRepository productHasOrdenRepository;
+	ProductHasOrdenService productHasOrdenService;
 	
-	@GetMapping("{id}")
-	public ProductHasOrden getProductOrdenById(@PathVariable int id) {
-		// TODO Auto-generated method stub
-		ProductHasOrden productHasOrdenExistente = productHasOrdenRepository.findById(id)
-				.orElseThrow(()-> new IllegalStateException("Registro de carrito no encontrada " + id));
+	@GetMapping("orden/{id}")
+	public List<ProductHasOrden> getProductHasOrdenByOrdenId(@PathVariable int id) {
+		List<ProductHasOrden> productHasOrdenExistente = productHasOrdenService.getProductHasOrdenByOrdenId(id);
 		return productHasOrdenExistente;
 	}
 	
 	@GetMapping
 	public List<ProductHasOrden> getAllProductHasOrden() {
-		// TODO Auto-generated method stub
-		List<ProductHasOrden> productHasOrden = productHasOrdenRepository.findAll();
+		List<ProductHasOrden> productHasOrden = productHasOrdenService.getAllProductHasOrden();
 		return productHasOrden;
 	}
 	
-	@GetMapping("orden/{id}")
-	public List<ProductHasOrden> getProductHasOrdenByOrdenId(@PathVariable int id) {
-		// TODO Auto-generated method stub
-		List<ProductHasOrden> productHasOrden = productHasOrdenRepository.findByOrderId(id);
+	@GetMapping("{id}")
+	public ProductHasOrden getProductOrdenById(@PathVariable int id) {
+		ProductHasOrden productHasOrden = productHasOrdenService.getProductOrdenById(id);
 		return productHasOrden;
 	}
 	
 	@PostMapping
 	public ProductHasOrden createProductHasOrden(@RequestBody ProductHasOrden productHasOrden) {
-		return productHasOrdenRepository.save(productHasOrden);
+		return productHasOrdenService.createProductHasOrden(productHasOrden);
 	}
 
 	@DeleteMapping("{id}")
 	public void deleteProductHasOrden(@PathVariable int id) {
-		ProductHasOrden productHasOrdenExistente = productHasOrdenRepository.findById(id)
-				.orElseThrow(()-> new IllegalStateException("Registro de carrito no encontrada " + id) );
-		if(productHasOrdenExistente != null) {
-			productHasOrdenRepository.delete(productHasOrdenExistente);
-		}
+		 productHasOrdenService.deleteProductHasOrden(id);
+				
 	}
 
 	@PutMapping("{id}")
 	public ProductHasOrden updateProductHasOrden(@PathVariable int id, @RequestBody ProductHasOrden productHasOrden) {
-		ProductHasOrden productHasOrdenExistente = productHasOrdenRepository.findById(id)
-				.orElseThrow(()-> new IllegalStateException("Registro de carrito no encontrada " + id) );
-		productHasOrdenExistente.setProductHasOrdenId(productHasOrden.getProductHasOrdenId());
-		productHasOrdenRepository.save(productHasOrdenExistente);
+		ProductHasOrden productHasOrdenExistente = productHasOrdenService.updateProductHasOrden(id, productHasOrden);
 		return productHasOrdenExistente;
 		
 		}
